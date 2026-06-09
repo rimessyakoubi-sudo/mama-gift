@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>💜 For My Mom 💖</title>
+
+<style>
+body{
+  margin:0;
+  font-family: Arial;
+  background: linear-gradient(135deg,#cdb4ff,#ffb3d9);
+  text-align:center;
+  overflow:hidden;
+  color:white;
+}
+
+.heart{
+  position:absolute;
+  color:#fff;
+  animation: float 6s linear infinite;
+  font-size:20px;
+}
+
+@keyframes float{
+  0%{transform:translateY(100vh);}
+  100%{transform:translateY(-10vh);}
+}
+
+button{
+  padding:10px 20px;
+  border:none;
+  border-radius:15px;
+  margin:10px;
+  cursor:pointer;
+  background:white;
+  color:#6a0dad;
+  font-weight:bold;
+}
+
+#msg,#game,#win{
+  display:none;
+  padding:20px;
+}
+
+.circle{
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#ff69b4,#8a2be2);
+  display:inline-block;
+  margin:10px;
+  cursor:pointer;
+}
+
+#win{
+  font-size:22px;
+  animation: pop 1s ease-in-out infinite alternate;
+}
+
+@keyframes pop{
+  from{transform:scale(1);}
+  to{transform:scale(1.1);}
+}
+
+/* إخفاء يوتيوب */
+iframe{
+  position:absolute;
+  width:1px;
+  height:1px;
+  opacity:0;
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🎵 موسيقى YouTube -->
+<iframe
+src="https://www.youtube.com/embed/RjW6g5zz1ck?autoplay=1&loop=1&playlist=RjW6g5zz1ck"
+allow="autoplay">
+</iframe>
+
+<!-- 💖 البداية -->
+<div id="box">
+  <h1>💜 هل ماما تقرأ الرسالة؟ 💖</h1>
+  <button onclick="showMsg()">نعم 💕</button>
+  <button onclick="showMsg()">أكيد 💜</button>
+</div>
+
+<!-- 💌 الرسالة (كما طلبتِ نخليوها طويلة وجميلة) -->
+<div id="msg">
+  <h2>💌 إلى أمي الحبيبة</h2>
+
+  <p style="line-height:1.8">
+  ماما… 💜  
+  يمكن ما نقولش برشا كلام، أما الحقيقة إنك أهم إنسانة في حياتي 💖  
+  تعبتِ، ضحّيتي، وصبرتي عليّا في كل لحظة 🤍  
+
+  وجودك هو الأمان، هو الحب، هو القوة 💕  
+  من غيرك الدنيا ما فيها حتى معنى.  
+
+  نحب نقلك شكراً على كل حاجة:  
+  على السهر، على التعب، على الحنان، على قلبك الكبير 🤍  
+
+  ربي يخليك ليا ديما وما يحرمنيش منك أبدًا 💖  
+
+  نحبك برشا برشا يا أمي… أكثر من أي كلمة تنجم توصف 💜✨
+  </p>
+
+  <button onclick="startGame()">🎮 نلعبو لعبة؟</button>
+</div>
+
+<!-- 🎮 اللعبة -->
+<div id="game">
+  <h2>🎮 Catch Hearts</h2>
+  <p>اضغط على القلوب 💖</p>
+
+  <h3>Score: <span id="score">0</span></h3>
+
+  <div class="circle" onclick="add()"></div>
+  <div class="circle" onclick="add()"></div>
+  <div class="circle" onclick="add()"></div>
+</div>
+
+<!-- 🏆 الفوز -->
+<div id="win">
+  <h1>💜 Bravo Maman! 💖</h1>
+  <p>أنتِ أحن وأجمل أم في الدنيا 🤍✨</p>
+</div>
+
+<script>
+
+let score=0;
+
+function showMsg(){
+  document.getElementById("box").style.display="none";
+  document.getElementById("msg").style.display="block";
+}
+
+function startGame(){
+  document.getElementById("msg").style.display="none";
+  document.getElementById("game").style.display="block";
+}
+
+function add(){
+  score++;
+  document.getElementById("score").innerText=score;
+
+  if(score>=5){
+    win();
+  }
+}
+
+function win(){
+  document.getElementById("game").style.display="none";
+  document.getElementById("win").style.display="block";
+
+  setInterval(()=>{
+    let heart=document.createElement("div");
+    heart.innerHTML="💜";
+    heart.classList.add("heart");
+    heart.style.left=Math.random()*100+"vw";
+    document.body.appendChild(heart);
+    setTimeout(()=>heart.remove(),6000);
+  },200);
+}
+
+setInterval(()=>{
+  let heart=document.createElement("div");
+  heart.innerHTML="💖";
+  heart.classList.add("heart");
+  heart.style.left=Math.random()*100+"vw";
+  document.body.appendChild(heart);
+  setTimeout(()=>heart.remove(),6000);
+},300);
+
+</script>
+
+</body>
+</html>
